@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Yii command line script for Unix/Linux.
+ *
+ * This is the bootstrap script for running yiic on Unix/Linux.
+ */
+date_default_timezone_set('UTC');
+
+$config = __DIR__ . '/protected/config/console.php';
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+require_once __DIR__ . '/vendor/yiisoft/yii/framework/yiic.php';

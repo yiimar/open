@@ -1,71 +1,26 @@
 <?php
 
-return array(
-	'basePath' => __DIR__ . '/..',
-	'name'=>'My Web Application',
+$dir = __DIR__ . DIRECTORY_SEPARATOR;
+require_once ($dir . '../helpers/global.php');
 
-	// preloading 'log' component
-	'preload'=>array('log'),
+$config = [
+    // autoloading model and component classes
+    'aliases'    => require ($dir . 'aliases.php'),
+    'import'     => require ($dir . 'import.php'),
+    'modules'    => require ($dir . 'modules.php'),
+    'components' => require ($dir . 'components.php'),
+    'params'     => require ($dir . 'params.php'),
 
-	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-	),
+    'basePath' => $dir . '..',
+	'name' => 'Import for "OPEN"',
 
-	'modules'=>array(
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-		),
-	),
+	'preload' => [
+	    'log',
+        'bootstrap',
+    ],
 
-	// application components
-	'components'=>array(
-		'user'=>array(
-			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
-		),
+    'sourceLanguage' => 'ru',
+    'language'       => 'ru',
+];
 
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-            'showScriptName'=>false,
-            'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
-		),
-
-		// database settings are configured in database.php
-		'db'=>require(dirname(__FILE__).'/database.php'),
-
-		'errorHandler'=>array(
-			// use 'site/error' action to display errors
-			'errorAction'=>YII_DEBUG ? null : 'site/error',
-		),
-
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-				array(
-					'class'=>'CWebLogRoute',
-				),
-			),
-		),
-
-	),
-
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-	),
-);
+return $config;

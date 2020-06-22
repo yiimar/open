@@ -1,14 +1,10 @@
 <?php
 
-// This is the database connection configuration.
-return array(
-	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-	// uncomment the following lines to use a MySQL database
-	/*
-	'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+return [
+    'class' => 'CDbConnection',
+	'connectionString' => 'mysql:host=127.0.0.1;dbname=open',
 	'emulatePrepare' => true,
-	'username' => 'root',
-	'password' => '',
+	'username' => 'admin',
+	'password' => '111',
 	'charset' => 'utf8',
-	*/
-);
+];

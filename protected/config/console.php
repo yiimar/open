@@ -1,29 +1,39 @@
 <?php
 
-// This is the configuration for yiic console application.
-// Any writable CConsoleApplication properties can be configured here.
-return array(
-	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Console Application',
+$dir = __DIR__ . DIRECTORY_SEPARATOR;
 
-	// preloading 'log' component
-	'preload'=>array('log'),
+$config = [
+    // autoloading model and component classes
+    'aliases'    => require ($dir . 'aliases.php'),
+    'params'     => require ($dir . 'params.php'),
+    'import'     => require ($dir . 'import.php'),
+    'modules'    => [],
 
-	// application components
-	'components'=>array(
+    'basePath' => $dir . '..',
 
-		// database settings are configured in database.php
-		'db'=>require(dirname(__FILE__).'/database.php'),
+    // preloading 'log' component
+    'preload'   => ['log'],
 
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-			),
-		),
+    // application components
+    'components'=> [
+        'db' => [
+            'class' => 'CDbConnection',
+            'connectionString' => 'mysql:host=127.0.0.1;dbname=open',
+            'emulatePrepare' => true,
+            'username' => 'admin',
+            'password' => '111',
+            'charset' => 'utf8',
+        ],//require($dir .'database.php'),
 
-	),
-);
+        'log' => [
+            'class'  => 'CLogRouter',
+            'routes' => [
+                [
+                    'class'  => 'CFileLogRoute',
+                    'levels' => 'error, warning',
+                ],
+            ],
+        ],
+    ],
+];
+return $config;
