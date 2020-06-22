@@ -1,0 +1,10 @@
+# ---- ФАЙЛЫ ----
+*.zip
+*.log
+*.pdf
+*.xls
+# ---- Директории ----
+/vendor
+/runtime
+/web/assets
+/.idea

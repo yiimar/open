@@ -1,0 +1,15 @@
+{
+  "name": "test_work/open",
+  "description": "testmwork for Open",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "yiimar",
+      "email": "yiimar@yandex.ru"
+    }
+  ],
+  "require": {
+      "yiisoft/yii": ">=1.1.20"
+  }
+}
