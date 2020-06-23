@@ -1,9 +1,9 @@
 <?php
 
-class m200622_110151_create_client_payment_table extends app\components\DMigration
+class m200622_110151_create_client_payment_table extends DMigration
 {
     protected $table = 'client_payment';
-    protected $fkKey = 'fk_sid_client_sid';
+    protected $fkKey = 'fk_pm_sid_client_sid';
 
 	public function up()
 	{
@@ -30,18 +30,9 @@ class m200622_110151_create_client_payment_table extends app\components\DMigrati
 
 	public function down()
 	{
+	    $this->dropForeignKey($this->fkKey, $this->table);
+	    $this->dropTable($this->table);
 		echo "m200622_110151_create_client_payment_table does not support migration down.\n";
 		return false;
 	}
-
-	/*
-	// Use safeUp/safeDown to do migration with transaction
-	public function safeUp()
-	{
-	}
-
-	public function safeDown()
-	{
-	}
-	*/
 }

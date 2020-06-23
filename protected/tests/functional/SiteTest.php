@@ -10,7 +10,7 @@ class SiteTest extends WebTestCase
 
 	public function testContact()
 	{
-		$this->open('?r=site/contact');
+		$this->open('?r=base/contact');
 		$this->assertTextPresent('Contact Us');
 		$this->assertElementPresent('name=ContactForm[name]');
 

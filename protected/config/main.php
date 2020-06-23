@@ -11,7 +11,7 @@ $config = [
     'components' => require ($dir . 'components.php'),
     'params'     => require ($dir . 'params.php'),
 
-    'basePath' => $dir . '..',
+    'basePath' => realpath($dir . '..'),
 	'name' => 'Import for "OPEN"',
 
 	'preload' => [

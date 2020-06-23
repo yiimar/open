@@ -1,35 +1,31 @@
 <?php
 
 return [
-    'user'=>[
+    'user' => [
         // enable cookie-based authentication
-        'allowAutoLogin'=>true,
+        'allowAutoLogin' => true,
     ],
-    'urlManager'=>[
-        'urlFormat'=>'path',
-        'showScriptName'=>false,
-        'rules'=>[
-            '<controller:\w+>/<id:\d+>'=>'<controller>/view',
-            '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-            '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-        ],
+    'urlManager' => [
+        'urlFormat' => 'path',
+        'showScriptName' => false,
+        'rules' => require(__DIR__ . '/rules.php'),
     ],
-    'db'=>require(__DIR__.'/database.php'),
+    'db' => require(__DIR__ . '/database.php'),
 
-    'errorHandler'=>[
-        'errorAction'=>YII_DEBUG ? null : 'site/error',
+    'errorHandler' => [
+        'errorAction' => YII_DEBUG ? null : 'base/error',
     ],
 
-    'log'=>[
-        'class'=>'CLogRouter',
-        'routes'=>[
+    'log' => [
+        'class' => 'CLogRouter',
+        'routes' => [
             [
-                'class'=>'CFileLogRoute',
-                'levels'=>'error, warning',
+                'class' => 'CFileLogRoute',
+                'levels' => 'error, warning',
             ],
-            [
-                'class'=>'CWebLogRoute',
-            ],
+//            [
+//                'class' => 'CWebLogRoute',
+//            ],
         ],
     ],
 

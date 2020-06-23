@@ -1,7 +1,8 @@
 <?php
 
+$dir = __DIR__ . DIRECTORY_SEPARATOR;
+
 return [
     'app' => realpath($dir . '..'),
-    'vendor' => $dir . '../../vendor',
-    'bootstrap'  => 'ext.booster',
+    'vendor' => realpath($dir . '../../vendor'),
 ];

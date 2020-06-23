@@ -1,6 +1,6 @@
 <?php
 
-class m200622_105955_create_client_table extends app\components\DMigration
+class m200622_105955_create_client_table extends DMigration
 {
     protected $table = 'client';
     protected $sidKey = 'idx_client_sid';
