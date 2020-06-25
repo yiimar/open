@@ -54,9 +54,9 @@ class Account extends DActiveRecord
 	public function attributeLabels()
 	{
 		return [
-			'id' => 'ID',
+			'id' => '№ счета',
 			'client_sid' => 'Sid Клиента',
-			'summa' => 'Сумма',
+			'summa' => 'Остаток на счету',
         ];
 	}
 

@@ -61,8 +61,8 @@ class Client extends DActiveRecord
 			'id' => 'ID',
 			'sid' => 'sid клиента',
 			'fio' => 'ФИО клиента',
-            'accoumt.id' => ' № счета',
-            'account.summa' => 'Остаток на счету',
+//            'accoumt.id' => '№ счета',
+//            'account.summa' => 'Остаток на счету',
         ];
 	}
 
