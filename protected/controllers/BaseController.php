@@ -1,5 +1,10 @@
 <?php
 
+use app\components\Controller;
+use app\models\Client;
+use app\models\Account;
+use app\models\forms\UploadForm;
+
 class BaseController extends Controller
 {
 	/**
@@ -21,36 +26,24 @@ class BaseController extends Controller
 	 */
 	public function actionError()
 	{
-		if ($error=app()->errorHandler->error) {
-			if (request()->isAjaxRequest)
+		if ($error = Yii::app()->errorHandler->error) {
+			if (Yii::app()->request->isAjaxRequest)
 				echo $error['message'];
 			else
 				$this->render('error', $error);
 		}
 	}
 
-	/**
-	 * Displays the contact page
-	 */
+    /**
+     * Displays the upload form page
+     * @throws \CDbException
+     */
 	public function actionUpload()
 	{
 		$model = new UploadForm();
-		if ($model->populate() && $model->proccess()) {
-		    $this->redirect(['/base/list']);
+		if ($model->populate() && $model->validate() && $model->proccess()) {
+            $this->redirect(['/base/list']);
         }
 		$this->render('upload', compact('model'));
 	}
-
-    /**
-     * Performs the AJAX validation.
-     * @param Client $model the model to be validated
-     */
-    protected function performAjaxValidation($model)
-    {
-        if(isset($_POST['ajax']) && $_POST['ajax']==='client-form')
-        {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-    }
 }

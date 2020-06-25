@@ -1,5 +1,9 @@
 <?php
-/* @var $this ClientController */
+
+use app\controllers\BaseController;
+use app\models\Client;
+
+/* @var $this BaseController */
 /* @var $model Client */
 
 $this->breadcrumbs= [
@@ -7,7 +11,7 @@ $this->breadcrumbs= [
 ];
 
 
-app()->clientScript->registerScript('search', "
+Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
 	return false;

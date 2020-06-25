@@ -1,4 +1,5 @@
 <?php
 return [
-    'adminEmail'=>'webmaster@example.com',
+    'adminEmail' => 'webmaster@example.com',
+    'enaibleExt' => 'xlsx',
 ];

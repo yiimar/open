@@ -62,52 +62,20 @@ abstract class BaseConfig implements ConfigInterface
     public function getBooks()
     {
         return [
-            1 => [//'Класс контракта',
-                'field'        => 'class',
-                'sheet_column' => 'Класс договора',
-                'table_column' => 'code',
-            ],
-            2 => [//'Вид контракта',
-                'field'        => 'species',
-                'sheet_column' => 'Вид договора',
-                'table_column' => 'code',
-            ],
-            3 => [//'Тип контракта',
-                'field'        => 'kind',
-                'sheet_column' => 'Тип договора',
-                'table_column' => 'code',
-            ],
             4 => [//'Способ закупки',
                 'field'        => 'purchase',
                 'sheet_column' => 'Способ закупки',
-                'table_column' => 'code',
-            ],
-            5 => [//'Ответственное подразделение',
-                'field'        => 'responsible',
-                'sheet_column' => 'Ответственное подразделение',
-                'table_column' => 'code',
-            ],
-            6 => [//'Валюта договора',
-                'field'        => 'currency',
-                'sheet_column' => 'Валюта договора',
                 'table_column' => 'code',
             ],
         ];
     }
 
     /**
-     * Массив полей пользователей TWS (из модели AuthUsers)
      * @return array
      */
     public function getUsers()
     {
         return [
-            [
-                'field'        => 'dpm_resp_id',
-                'sheet_column' => 'Ответственный от DPM за спецификацию/договор',
-                'table_column' => 'name',
-                'factor'       => self::MODEL_FACTOR_NOTHING,
-            ],
         ];
     }
 

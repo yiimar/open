@@ -7,6 +7,7 @@ return [
     ],
     'urlManager' => [
         'urlFormat' => 'path',
+        'urlSuffix' => '/',
         'showScriptName' => false,
         'rules' => require(__DIR__ . '/rules.php'),
     ],

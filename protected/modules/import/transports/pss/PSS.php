@@ -14,7 +14,7 @@ use app\modules\import\components\ColumnNameReadFilter;
  *
  * @author yiimar
  */
-class PSS extends \yii\base\Component
+class PSS
 {
     public $path;
     public $reader;

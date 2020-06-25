@@ -9,7 +9,7 @@ class DMigration extends CDbMigration
      */
     public function getOptions()
     {
-        return db()->schema instanceof CMysqlSchema
+        return Yii::app()->db->schema instanceof CMysqlSchema
             ? 'ENGINE=InnoDB DEFAULT CHARSET=utf8'
             : '';
     }

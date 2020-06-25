@@ -1,11 +1,13 @@
 <?php
 
+namespace app\components;
+
 
 /**
  * Class FormModel
  * @package application.components
  */
-class FormModel extends CFormModel
+class FormModel extends \CFormModel
 {
     /**
      * Fill form fields:
@@ -15,7 +17,7 @@ class FormModel extends CFormModel
     public function populate()
     {
         $class = str_replace('\\', '_', get_class($this));
-        $data  = request()->getPost($class);
+        $data  = \Yii::app()->request->getPost($class);
         $this->setAttributes($data);
 
         return $data;
@@ -29,10 +31,10 @@ class FormModel extends CFormModel
      */
     public function ajaxValidate($ajaxValue = null)
     {
-        if (request()->getPost('ajax') === $ajaxValue) {
-            echo CActiveForm::validate($this);
+        if (\Yii::app()->request->getPost('ajax') === $ajaxValue) {
+            echo \CActiveForm::validate($this);
 
-            app()->end();
+            \Yii::app()->end();
         }
     }
 
@@ -45,7 +47,7 @@ class FormModel extends CFormModel
      */
     public function getPlaceHolder($field, $category = 'app')
     {
-        return Yii::t($category, 'Input :field_name', [
+        return \Yii::t($category, 'Input :field_name', [
             ':field_name' => mb_strtolower($this->getAttributeLabel($field), 'UTF-8'),
         ]);
     }

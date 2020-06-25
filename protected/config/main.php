@@ -1,7 +1,6 @@
 <?php
 
 $dir = __DIR__ . DIRECTORY_SEPARATOR;
-require_once ($dir . '../helpers/global.php');
 
 $config = [
     // autoloading model and component classes

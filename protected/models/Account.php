@@ -1,5 +1,10 @@
 <?php
 
+namespace app\models;
+
+use app\models\Client;
+use app\components\DActiveRecord;
+
 /**
  * This is the model class for table "account".
  *
@@ -11,7 +16,7 @@
  * The followings are the available model relations:
  * @property Client $clientS
  */
-class Account extends CActiveRecord
+class Account extends DActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -26,15 +31,11 @@ class Account extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('client_sid, summa', 'required'),
-			array('client_sid', 'numerical', 'integerOnly'=>true),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, client_sid, summa', 'safe', 'on'=>'search'),
-		);
+		return [
+			['client_sid, summa', 'required'],
+			['client_sid', 'numerical', 'integerOnly' => true],
+			['id, client_sid, summa', 'safe', 'on' => 'search'],
+        ];
 	}
 
 	/**
@@ -42,11 +43,9 @@ class Account extends CActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'clientS' => array(self::BELONGS_TO, 'Client', 'client_sid'),
-		);
+		return [
+			'clientS' => [self::HAS_ONE, Client::class, ['sid' => 'client_sid']],
+        ];
 	}
 
 	/**
@@ -54,11 +53,11 @@ class Account extends CActiveRecord
 	 */
 	public function attributeLabels()
 	{
-		return array(
+		return [
 			'id' => 'ID',
-			'client_sid' => 'Client Sid',
-			'summa' => 'Summa',
-		);
+			'client_sid' => 'Sid Клиента',
+			'summa' => 'Сумма',
+        ];
 	}
 
 	/**
@@ -70,22 +69,20 @@ class Account extends CActiveRecord
 	 * models according to data in model fields.
 	 * - Pass data provider to CGridView, CListView or any similar widget.
 	 *
-	 * @return CActiveDataProvider the data provider that can return the models
+	 * @return \CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
-		$criteria=new CDbCriteria;
+		$criteria=new \CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('client_sid',$this->client_sid);
 		$criteria->compare('summa',$this->summa,true);
 
-		return new CActiveDataProvider($this, array(
+		return new \CActiveDataProvider($this, [
 			'criteria'=>$criteria,
-		));
+        ]);
 	}
 
 	/**
